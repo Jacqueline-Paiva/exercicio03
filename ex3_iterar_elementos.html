@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ex3 - Iteração</title>
+</head>
+<body>
+  <h2>Veja o console (F12)</h2>
+
+  <script>
+    const xmlString = `
+    <biblioteca>
+      <livro categoria="ficcao">
+        <titulo>O Guia do Mochileiro das Galáxias</titulo>
+        <autor>Douglas Adams</autor>
+      </livro>
+      <livro categoria="tecnico">
+        <titulo>Introdução ao XML</titulo>
+        <autor>Professor Exemplo</autor>
+      </livro>
+    </biblioteca>`;
+
+    const parser = new DOMParser();
+    const xmlDoc = parser.parseFromString(xmlString, "text/xml");
+
+    const raiz = xmlDoc.getElementsByTagName("biblioteca")[0];
+    const filhos = raiz.childNodes;
+
+    for (let i = 0; i < filhos.length; i++) {
+      if (filhos[i].nodeType === 1) {
+        console.log("Elemento:", filhos[i].nodeName);
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ex4 - Alterar Preço</title>
+</head>
+<body>
+  <h2>Veja o console (F12)</h2>
+
+  <script>
+    const xmlString = `
+    <biblioteca>
+      <livro>
+        <titulo>O Livro Invisível</titulo>
+        <preco>39.90</preco>
+      </livro>
+    </biblioteca>`;
+
+    const parser = new DOMParser();
+    const xmlDoc = parser.parseFromString(xmlString, "text/xml");
+
+    const preco = xmlDoc.getElementsByTagName("preco")[0];
+    preco.childNodes[0].nodeValue = "99.99";
+
+    console.log("Novo valor do preço:", preco.textContent);
+  </script>
+</body>
+</html>

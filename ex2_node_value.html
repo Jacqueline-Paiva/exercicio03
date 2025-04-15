@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ex2 - Acesso ao Título</title>
+</head>
+<body>
+  <h2>Abra o console (F12)</h2>
+
+  <script>
+    const xmlString = `
+    <biblioteca>
+      <livro categoria="ficcao">
+        <titulo>O Guia do Mochileiro das Galáxias</titulo>
+        <autor>Douglas Adams</autor>
+      </livro>
+      <livro categoria="tecnico">
+        <titulo>Introdução ao XML</titulo>
+        <autor>Professor Exemplo</autor>
+      </livro>
+    </biblioteca>`;
+
+    const parser = new DOMParser();
+    const xmlDoc = parser.parseFromString(xmlString, "text/xml");
+
+    const livros = xmlDoc.getElementsByTagName("livro");
+    const segundoTitulo = livros[1].getElementsByTagName("titulo")[0].childNodes[0].nodeValue;
+
+    console.log("Título do segundo livro:", segundoTitulo);
+  </script>
+</body>
+</html>
